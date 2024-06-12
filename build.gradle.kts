@@ -1,3 +1,4 @@
+import org.jetbrains.kotlin.ir.backend.js.compileIr
 import org.spongepowered.asm.gradle.plugins.MixinExtension
 import org.spongepowered.asm.gradle.plugins.struct.DynamicProperties
 import java.text.SimpleDateFormat
@@ -156,6 +157,75 @@ dependencies {
     implementation("thedarkcolour:kotlinforforge:4.3.0")
 
     implementation(fg.deobf("curse.maven:configuration-444699:5030089"))
+
+    compileOnly("org.projectlombok:lombok:1.18.24")
+    annotationProcessor("org.projectlombok:lombok:1.18.24")
+
+    implementation("com.google.code.findbugs:jsr305:3.0.2")
+
+    // tests
+    testImplementation("org.junit.jupiter:junit-jupiter-engine:5.9.2")
+    testImplementation("io.javalin:javalin:5.4.2")
+    testImplementation("org.mockito:mockito-core:5.2.0")
+
+    // From Forge
+
+    // LDLib
+    api("curse.maven:ldlib-626676:5421796") { }
+//    include(forge.ldlib.forge)
+
+    /*// Registrate
+    api(compileOnly("com.tterrag.registrate:Registrate:${forge.versions.registrate.get()}"))
+
+    // Create and its dependencies
+    compileOnly("com.simibubi.create:create-${libs.versions.minecraft.get()}:${forge.versions.createForge.get()}:all") {
+
+    }
+    compileOnly(forge.flywheel)
+
+    // JEI
+    compileOnly(forge.jei.common.api) { }
+    compileOnly(forge.jei.forge.api) { }
+    compileOnly(forge.jei.forge.impl) { }
+
+    // REI
+    compileOnly(forge.rei.plugin)
+    compileOnly(forge.rei.api)
+    implementation(forge.rei.forge)
+
+    // EMI
+    implementation("dev.emi:emi-forge:${forge.versions.emi.get()}:api")
+    compileOnly(forge.emi)
+
+    // TOP
+    compileOnly(forge.theoneprobe) { transitive = false }
+
+    // Jade
+    implementation(forge.jade)
+
+    // AE2
+
+
+    //AlmostUnified
+    implementation(forge.almostUnified.forge)
+
+    // KJS
+    implementation(forge.kubejs)
+
+    // Mixin Extras
+    implementation(annotationProcessor("io.github.llamalad7:mixinextras-common:${this.forge.versions.mixinextras.get()}")!!)
+
+    // Configuration
+    api(forge.configuration)
+//    include(forge.configuration)
+
+    // Shimmer
+    api(forge.shimmer.forge) {  }*/
+
+    implementation("curse.maven:ae2-223794:5401948") { }
+
+    implementation("maven.modrinth:embeddium:0.2.10+mc1.20.1")
+    implementation("maven.modrinth:oculus:1.20.1-1.6.9")
 }
 
 val Project.mixin: MixinExtension
