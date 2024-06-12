@@ -2,6 +2,7 @@ package com.pleahmacaka.examplemod
 
 import com.pleahmacaka.examplemod.init.BlockItemRegistry
 import com.pleahmacaka.examplemod.init.BlockRegistry
+import com.pleahmacaka.examplemod.init.ConfigRegistry
 import com.pleahmacaka.examplemod.init.ItemRegistry
 import com.pleahmacaka.examplemod.keybind.KeyBindHandler.registerKeybindings
 import net.minecraftforge.fml.common.Mod
@@ -26,6 +27,8 @@ object ExampleMod {
         ItemRegistry.register(MOD_BUS)
         BlockRegistry.register(MOD_BUS)
         BlockItemRegistry.register(MOD_BUS)
+
+        ConfigRegistry.registerConfigs()
     }
 
     @Suppress("UNUSED_PARAMETER")

@@ -67,7 +67,9 @@ minecraft {
     runs.run {
         create("client") {
             property("log4j.configurationFile", "log4j2.xml")
+            jvmArg("-XX:+IgnoreUnrecognizedVMOptions")
             jvmArg("-XX:+AllowEnhancedClassRedefinition")
+            jvmArg("-Dnet.minecraftforge.gradle.check.certs=false")
             args("--username", "Player")
         }
 
@@ -96,6 +98,9 @@ repositories {
         name = "Kotlin for Forge"
         url = uri("https://thedarkcolour.github.io/KotlinForForge/")
     }
+
+    maven { url = uri("https://www.cursemaven.com") }
+
 }
 
 fun getProperty(name: String): String {
@@ -106,6 +111,8 @@ dependencies {
     minecraft("net.minecraftforge:forge:$minecraftVersion-$forgeVersion")
     annotationProcessor("org.spongepowered:mixin:0.8.5:processor")
     implementation("thedarkcolour:kotlinforforge:4.3.0")
+
+    implementation(fg.deobf("curse.maven:configuration-444699:5030089"))
 }
 
 val Project.mixin: MixinExtension
