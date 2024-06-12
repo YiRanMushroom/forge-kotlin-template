@@ -93,14 +93,57 @@ minecraft {
 sourceSets.main.configure { resources.srcDirs("src/generated/resources/") }
 
 repositories {
+    mavenLocal()
     mavenCentral()
     maven {
         name = "Kotlin for Forge"
         url = uri("https://thedarkcolour.github.io/KotlinForForge/")
     }
 
-    maven { url = uri("https://www.cursemaven.com") }
-
+    // GTM Repos
+    maven { url = uri("https://api.modrinth.com/maven") } // LazyDFU, Jade
+    maven { url = uri("https://maven.terraformersmc.com/releases/") } // Mod Menu, EMI
+    maven { url = uri("https://maven.shedaniel.me/") } // Cloth Config, REI
+    maven {
+        url = uri("https://cursemaven.com")
+        content {
+            includeGroup("curse.maven")
+        }
+    } // Curse Forge File
+    maven {
+        name = "Jared's maven"
+        url = uri("https://maven.blamejared.com/")
+    } // JEI
+    maven {
+        // location of a maven mirror for JEI files, as a fallback
+        name = "ModMaven"
+        url = uri("https://modmaven.dev")
+    } // JEI mirror, AE2
+    maven { url = uri("https://maven.parchmentmc.org") } // Parchment mappings
+    maven { url = uri("https://maven.quiltmc.org/repository/release") } // Quilt Mappings
+    maven { url = uri("https://maven.firstdarkdev.xyz/snapshots") } // LDLib
+    maven { // Flywheel
+        url = uri("https://maven.tterrag.com/")
+        content {
+            // need to be specific here due to version overlaps
+            includeGroup("com.jozufozu.flywheel")
+            includeGroup("com.tterrag.registrate")
+            includeGroup("com.simibubi.create")
+        }
+    }
+    maven { url = uri("https://maven.theillusivec4.top/") } // Curios
+    maven { // TOP
+        url = uri("https://maven.k-4u.nl")
+    }
+    maven {
+        // saps.dev Maven (KubeJS and Rhino)
+        url = uri("https://maven.saps.dev/minecraft")
+        content {
+            includeGroup("dev.latvian.mods")
+        }
+    }
+    maven { url = uri("https://maven.jamieswhiteshirt.com/libs-release") } // Reach Entity Attributes
+    maven { url = uri("https://jitpack.io") } // Mixin Extras, Fabric ASM
 }
 
 fun getProperty(name: String): String {
